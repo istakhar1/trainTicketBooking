@@ -74,6 +74,18 @@ public class Registration {
 		    return false;
 	}
 	
+	public boolean checkSeat( Seat request) {
+		String section =  request.getSection();
+		long id = request.getId();
+		  for (Registration registration : registrationList) {
+		        if (registration.getSeat().getId() == id && registration.getSeat().getSection() == section) {
+		            return false;
+		        }
+		    }
+		
+		return true;
+	}
+	
 	
 
 }

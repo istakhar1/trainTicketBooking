@@ -44,18 +44,24 @@ public class RegistrationController {
 	    ticket.addTicket(ticket);
 		// seat set karna h;
 	    
-	   Seat newSeat = new Seat("A",user);
-	   long id = newSeat.getId();
-	   if(id>10) {
-		   newSeat.decrreementID();
-		   Seat newSeatB = new Seat("B",user);
-		   newregistation.setSeat(newSeatB);
-		   
-	   }
-	   else if (id<=20) {
-		   newregistation.setSeat(newSeat);
-	   }
+	    Seat newSeat = new Seat();
+	    
+	    if (newUserId>20) {
+	    	newSeat.setId((long) (-1));
+	    	newSeat.setSection("Seat not available !!!");
+	    }
+	    else if(newUserId>10) {
+	    	newSeat.setId((long) (newUserId%11+1));
+	    	newSeat.setSection("B");
+	    }
+	    else {
+	    	newSeat.setId((long)newUserId);
+	    	newSeat.setSection("A");
+	    }
 	   
+	    newSeat.setUser(user);
+	    newregistation.setSeat(newSeat);
+	
 	   Registration reg = new Registration();
 	   reg.addRegitration(newregistation);
 	  

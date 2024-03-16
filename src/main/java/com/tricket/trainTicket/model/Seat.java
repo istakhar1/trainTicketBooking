@@ -3,28 +3,39 @@ package com.tricket.trainTicket.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Seat {
-    private static long nextId = 0; // static variable to keep track of the next available seat ID
+ // static variable to keep track of the next available seat ID
     private Long id;
     private String section;
     @JsonIgnore
     private User user;
 
     // Constructor
-    public Seat(String section, User user) {
-        this.id = nextId++; // Assign a unique ID to each seat
+    public Seat(String section, User user, Long id) {
+        this.id = id; // Assign a unique ID to each seat
         this.section = section;
         this.user = user;
     }
+    public Seat(String section,Long id) {
+        this.id = id; // Assign a unique ID to each seat
+        this.section = section;
+    }
 
+    public Seat() {
+   
+    }
     // Getters and setters
+    
+    public void setId(Long id) {
+         this.id= id;
+    }
+    
     public Long getId() {
         return id;
     }
     
-    public void decrreementID() {
-    	nextId--;
+    public void setSection(String section) {
+         this.section=section;
     }
-
     public String getSection() {
         return section;
     }
